@@ -1,0 +1,13 @@
+{% extends 'clientes/base.html' %}
+{% block title %}Registrar ficha{% endblock %}
+{% block content %}
+<h2>Registrar ficha de mascota y dueño</h2>
+<form method="post">
+    {% csrf_token %}
+    <h4>Datos del dueño</h4>
+    {{ dueno_form.as_p }}
+    <h4>Datos de la mascota</h4>
+    {{ mascota_form.as_p }}
+    <button type="submit" class="btn btn-success">Guardar ficha</button>
+</form>
+{% endblock %}

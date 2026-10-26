@@ -1,0 +1,22 @@
+{% extends 'clientes/base.html' %}
+{% block title %}Buscar ficha{% endblock %}
+{% block content %}
+<h2>Buscar ficha</h2>
+<form method="get" class="mb-3">
+    <input type="text" name="q" value="{{ query }}" placeholder="Código o nombre de mascota" class="form-control">
+    <button type="submit" class="btn btn-primary mt-2">Buscar</button>
+</form>
+{% if query %}
+    <h4>Resultados para "{{ query }}"</h4>
+    <ul>
+        {% for m in resultados %}
+            <li>
+                <strong>{{ m.nombre }}</strong> ({{ m.especie }}, {{ m.edad }} años, {{ m.get_sexo_display }})
+                — Dueño: {{ m.dueno.nombre }} — Código: {{ m.codigo_historial }}
+            </li>
+        {% empty %}
+            <li>No se encontraron resultados.</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}
